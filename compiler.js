@@ -27,7 +27,6 @@ function compileApply(ast) {
     return compileOperator(ast);
   }
   return compileFunctionCall(ast);
-  // throw new Error('Unexpected Apply');
 }
 
 function compileOperator(ast) {
@@ -58,8 +57,7 @@ const specialFormCompileMatcher = {
   },
   fun: function compileFunction(ast) {
     const functionParams = ast.args.slice(0, -1).map((arg) => compileExpression(arg));
-    let functionBody;
-    functionBody = compileExpression(ast.args[ast.args.length - 1]).split('\n');
+    let functionBody = compileExpression(ast.args[ast.args.length - 1]).split('\n');
     if(ast.args[ast.args.length - 1].operator.name === 'do'){
       functionBody[functionBody.length - 1] = `return ${functionBody[functionBody.length - 1]}`;
       functionBody = functionBody.join('\n');

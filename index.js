@@ -17,7 +17,7 @@ const program = `
 `;
 console.log(compile(program));
 
-// console.log(getCompiled(`
+// console.log(compile(`
 // do(
 //    define(x, /(+(4,2), /(6,3))),
 //    define(y, +(x,5)),
